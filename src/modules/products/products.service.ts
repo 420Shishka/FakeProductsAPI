@@ -1,48 +1,52 @@
 import { Injectable } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
 
-import { IProduct } from './products.model';
+import { ApiResponse, IProduct } from '../../models';
+import { FakeApiService } from '../../shared';
 
-type HttpOptions = {
-  path: string;
-  method: 'get' | 'post' | 'put' | 'delete';
-  params?: {
-    [key: string]: any;
-  };
-  body?: any;
-}
+import { CreateProductDto, UpdateProductDto } from './products.dto';
 
 @Injectable()
 export class ProductsService {
-  constructor(private readonly configService: ConfigService) { }
+  constructor(private readonly fakeApiService: FakeApiService) { }
 
-  public async getProducts(offset: number, limit: number): Promise<IProduct[]> {
-
-    return this.callApi<IProduct[]>({
+  public async getProducts(offset: number, limit: number): Promise<ApiResponse<IProduct[]>> {
+    return this.fakeApiService.call<IProduct[]>({
       path: '/products',
       params: { offset, limit },
       method: 'get',
     });
   }
 
-  private async callApi<T>(options: HttpOptions): Promise<T> {
-    const baseUrl = this.configService.get<string>('FAKE_STORAGE_API_URL');
-
-    if (!baseUrl) {
-      throw new Error('.env variable FAKE_STORAGE_API_URL is not defined');
-    }
-
-    const url = baseUrl + options.path;
-    const params = new URLSearchParams(options.params ?? {}).toString();
-
-    const response = await fetch(`${url}?${params}`, {
-      ...(options.body && { body: options.body }),
-      method: options.method,
-      headers: {
-        'Content-Type': 'application/json',
-      },
+  public async getProductById(id: number): Promise<ApiResponse<IProduct>> {
+    return this.fakeApiService.call<IProduct>({
+      path: `/products/${id}`,
+      method: 'get',
     });
+  }
 
-    return response.json();
+  public async createProduct(dto: CreateProductDto): Promise<ApiResponse<IProduct>> {
+    return this.fakeApiService.call<IProduct>({
+      path: '/products',
+      method: 'post',
+      body: JSON.stringify(dto),
+    });
+  }
+
+  public async updateProduct(
+    id: number,
+    dto: UpdateProductDto
+  ): Promise<ApiResponse<IProduct>> {
+    return this.fakeApiService.call<IProduct>({
+      path: `/products/${id}`,
+      method: 'put',
+      body: JSON.stringify(dto),
+    });
+  }
+
+  public async deleteProduct(id: number): Promise<ApiResponse<boolean>> {
+    return this.fakeApiService.call<boolean>({
+      path: `/products/${id}`,
+      method: 'delete',
+    });
   }
 }
