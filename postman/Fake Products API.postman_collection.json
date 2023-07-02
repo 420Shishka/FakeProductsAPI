@@ -1,0 +1,446 @@
+{
+	"info": {
+		"_postman_id": "a2f8bb8d-3eb7-4dab-a681-ba1c5d63152e",
+		"name": "Fake Products API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Get Paginated Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_BASE_URL}}/products?offset=0&limit=10",
+							"host": [
+								"{{API_BASE_URL}}"
+							],
+							"path": [
+								"products"
+							],
+							"query": [
+								{
+									"key": "offset",
+									"value": "0"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Example",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_BASE_URL}}/products?offset=0&limit=10",
+									"host": [
+										"{{API_BASE_URL}}"
+									],
+									"path": [
+										"products"
+									],
+									"query": [
+										{
+											"key": "offset",
+											"value": "0"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Get Product By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_BASE_URL}}/products/1",
+							"host": [
+								"{{API_BASE_URL}}"
+							],
+							"path": [
+								"products",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Example",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_BASE_URL}}/products/1",
+									"host": [
+										"{{API_BASE_URL}}"
+									],
+									"path": [
+										"products",
+										"1"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Create Product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"New Product\",\n  \"price\": 10,\n  \"description\": \"A description\",\n  \"categoryId\": 1,\n  \"images\": [\"https://placeimg.com/640/480/any\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_BASE_URL}}/products",
+							"host": [
+								"{{API_BASE_URL}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Example",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"title\": \"New Product\",\n  \"price\": 10,\n  \"description\": \"A description\",\n  \"categoryId\": 1,\n  \"images\": [\"https://placeimg.com/640/480/any\"]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_BASE_URL}}/products",
+									"host": [
+										"{{API_BASE_URL}}"
+									],
+									"path": [
+										"products"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "94"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5e-c7wAUowPoi7HAZAqLkrKNPyPMCw\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 02 Jul 2023 15:39:01 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": [\n        \"images must contain at least 1 elements\"\n    ],\n    \"error\": \"Bad Request\",\n    \"statusCode\": 400\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Product",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"title\",\n  \"price\": 100\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_BASE_URL}}/products/2",
+							"host": [
+								"{{API_BASE_URL}}"
+							],
+							"path": [
+								"products",
+								"2"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Example",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"title\": \"title\",\n  \"price\": 100\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_BASE_URL}}/products/2",
+									"host": [
+										"{{API_BASE_URL}}"
+									],
+									"path": [
+										"products",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "534"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"216-DzXMmQzkfHRgaDbyPiVfTLSEB/Y\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 02 Jul 2023 16:54:28 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 2,\n    \"title\": \"title\",\n    \"price\": 100,\n    \"description\": \"Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals\",\n    \"images\": [\n        \"https://picsum.photos/640/640?r=506\",\n        \"https://picsum.photos/640/640?r=3150\",\n        \"https://picsum.photos/640/640?r=7630\"\n    ],\n    \"creationAt\": \"2023-07-02T01:17:06.000Z\",\n    \"updatedAt\": \"2023-07-02T16:54:28.000Z\",\n    \"category\": {\n        \"id\": 4,\n        \"name\": \"Shoes\",\n        \"image\": \"https://picsum.photos/640/640?r=4991\",\n        \"creationAt\": \"2023-07-02T01:17:06.000Z\",\n        \"updatedAt\": \"2023-07-02T01:17:06.000Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Product",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{API_BASE_URL}}/products/2",
+							"host": [
+								"{{API_BASE_URL}}"
+							],
+							"path": [
+								"products",
+								"2"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Example",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{API_BASE_URL}}/products/2",
+									"host": [
+										"{{API_BASE_URL}}"
+									],
+									"path": [
+										"products",
+										"2"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Categories",
+			"item": [
+				{
+					"name": "Get Category By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_BASE_URL}}/categories/1",
+							"host": [
+								"{{API_BASE_URL}}"
+							],
+							"path": [
+								"categories",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Example",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_BASE_URL}}/categories/1",
+									"host": [
+										"{{API_BASE_URL}}"
+									],
+									"path": [
+										"categories",
+										"1"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Ping",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{API_BASE_URL}}/ping",
+					"host": [
+						"{{API_BASE_URL}}"
+					],
+					"path": [
+						"ping"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Example",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_BASE_URL}}/ping",
+							"host": [
+								"{{API_BASE_URL}}"
+							],
+							"path": [
+								"ping"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "API_BASE_URL",
+			"value": "http://localhost:3000/api/v1",
+			"type": "default"
+		}
+	]
+}
